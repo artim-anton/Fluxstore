@@ -19,7 +19,7 @@ public class PageFragment2 extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup)inflater.
-                inflate(R.layout.page_2,container,
+                inflate(R.layout.onboarding_2,container,
                         false);
         return rootView;
 

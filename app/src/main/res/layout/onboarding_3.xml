@@ -14,16 +14,36 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         app:srcCompat="@drawable/fogg_uploading_1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_weight="1">
     <TextView
-        android:text="Sign In | Sign Up"
+        android:text="Sign In"
         android:fontFamily="@font/raleway"
         android:textFontWeight="300"
         android:textSize="31dp"
-        android:textColor="@color/black"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:textColor="@color/green"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"/>
+        android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="2dp"
+            android:layout_height="31dp"
+            android:background="@color/green"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp" />
+
+        <TextView
+            android:text="Sign Up"
+            android:fontFamily="@font/raleway"
+            android:textFontWeight="300"
+            android:textSize="31dp"
+            android:textColor="@color/green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="0dp"
@@ -40,11 +60,12 @@
         android:layout_height="wrap_content"/>
 
     <TextView
+        android:id="@+id/skip"
         android:text="Skip>"
         android:fontFamily="@font/raleway"
         android:textFontWeight="300"
         android:textSize="22dp"
-        android:textColor="@color/skip"
+        android:textColor="@color/green"
         android:layout_marginRight="48dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
