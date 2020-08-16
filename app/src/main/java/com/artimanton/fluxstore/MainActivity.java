@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private PagerAdapter pagerAdapter;
     private TextView textView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,18 +37,10 @@ public class MainActivity extends AppCompatActivity {
         changeStatusBarColor();
         initFragments();
 
+        textView = (TextView) findViewById(R.id.skip);
 
 
-        /*View view = pager.getFocusedChild();
-        textView = (TextView) view.findViewById(R.id.skip);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Dresses.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     private void initFragments() {
