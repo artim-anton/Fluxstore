@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.artimanton.fluxstore.DressesActivity;
+import com.artimanton.fluxstore.ListingActivity;
 import com.artimanton.fluxstore.R;
 
 public class PageFragment3 extends Fragment {
@@ -32,7 +32,7 @@ public class PageFragment3 extends Fragment {
         textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), DressesActivity.class);
+                    Intent intent = new Intent(getContext(), ListingActivity.class);
                     startActivity(intent);
                     getActivity().finish();
                 }

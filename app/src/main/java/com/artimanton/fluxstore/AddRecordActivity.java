@@ -2,13 +2,11 @@ package com.artimanton.fluxstore;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.artimanton.fluxstore.models.DressesModel;
-import com.google.firebase.auth.FirebaseAuth;
+import com.artimanton.fluxstore.models.ProductModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,7 +21,7 @@ public class AddRecordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_record);
+        setContentView(R.layout.activity_add_product);
         database = FirebaseDatabase.getInstance();
         etTitle = findViewById(R.id.tv_title);
         etPrice = findViewById(R.id.tv_price);
@@ -41,7 +39,16 @@ public class AddRecordActivity extends AppCompatActivity {
 
         //String mUserId = FirebaseAuth.getInstance().getUid();
         String id = reference.push().getKey();
-        DressesModel newAdvert = new DressesModel(etTitle.getText().toString(), etPrice.getText().toString(), etSize.getText().toString(), etColor.getText().toString(), etDescription.getText().toString(), etProduct_code.getText().toString(), etMaterial.getText().toString(), etCountry.getText().toString(), id);
+        ProductModel newAdvert = new ProductModel(
+                etTitle.getText().toString(),
+                etPrice.getText().toString(),
+                etSize.getText().toString(),
+                etColor.getText().toString(),
+                etDescription.getText().toString(),
+                etProduct_code.getText().toString(),
+                etMaterial.getText().toString(),
+                etCountry.getText().toString(),
+                id);
 
         Map<String, Object> advertValue = newAdvert.toMap();
         Map<String, Object> record = new HashMap<>();
