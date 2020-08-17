@@ -1,5 +1,7 @@
 package com.artimanton.fluxstore.models;
 
+import android.widget.EditText;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
