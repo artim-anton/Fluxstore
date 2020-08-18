@@ -1,14 +1,16 @@
 package com.artimanton.fluxstore;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
+import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.artimanton.fluxstore.adapter.ProductAdapter;
 import com.artimanton.fluxstore.models.ProductModel;
@@ -32,11 +34,22 @@ public class ListingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
-
+        setContentView(R.layout.activity_listing);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back_white_24dp);
         load_product();
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        // Retrieve the SearchView and plug it into SearchManager
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
     }
 
     private void updateList(){
@@ -118,4 +131,5 @@ public class ListingActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddRecordActivity.class);
         startActivity(intent);
     }
+
 }
