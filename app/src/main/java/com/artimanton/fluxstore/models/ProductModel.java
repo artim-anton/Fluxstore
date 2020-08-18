@@ -15,6 +15,11 @@ public class ProductModel implements Serializable {
     public String product_code;
     public String material;
     public String country;
+
+    public String getKey() {
+        return key;
+    }
+
     public String key;
 
     public ProductModel(){}

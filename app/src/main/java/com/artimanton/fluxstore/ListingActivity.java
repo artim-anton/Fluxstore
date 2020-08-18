@@ -27,6 +27,7 @@ public class ListingActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<ProductModel> result;
     private ProductAdapter adapter;
+    private ProductAdapter.RecyclerViewClickListner listner;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -105,6 +106,7 @@ public class ListingActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("test");
 
+        setOnClickListner();
         result = new ArrayList<>();
         recyclerView =  findViewById(R.id.record_list);
         int numberOfColumns = 2;
@@ -113,7 +115,7 @@ public class ListingActivity extends AppCompatActivity {
         //layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         //recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new ProductAdapter(result);
+        adapter = new ProductAdapter(result, listner);
         recyclerView.setAdapter(adapter);
 
         updateList();
@@ -125,6 +127,17 @@ public class ListingActivity extends AppCompatActivity {
         adapter = new ProductAdapter(this, data);
         recyclerView.setAdapter(adapter);*/
 
+    }
+
+    private void setOnClickListner() {
+        listner = new ProductAdapter.RecyclerViewClickListner() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent intent = new Intent(getApplicationContext(), ProductPageActivity.class);
+                intent.putExtra("key", result.get(position).getKey());
+                startActivity(intent);
+            }
+        };
     }
 
     public void add_record(View view) {
