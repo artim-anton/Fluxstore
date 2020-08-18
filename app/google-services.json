@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "643098868359",
+    "firebase_url": "https://fluxstore-3db9b.firebaseio.com",
+    "project_id": "fluxstore-3db9b",
+    "storage_bucket": "fluxstore-3db9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643098868359:android:597939966237a3df6ed622",
+        "android_client_info": {
+          "package_name": "com.artimanton.fluxstore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643098868359-etk58rvoitlrvrc4hmqvidbhfi1gfsc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.artimanton.fluxstore",
+            "certificate_hash": "0c4ad327400a2491529bec67a50e32f4de32c075"
+          }
+        },
+        {
+          "client_id": "643098868359-mqud47fhpngol70jviuvo9f4e6tqds8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4fbUmTMv-Ta0gjugJdrByln8P3mXF1b8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643098868359-mqud47fhpngol70jviuvo9f4e6tqds8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
