@@ -134,7 +134,10 @@ public class ListingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v, int position) {
                 Intent intent = new Intent(getApplicationContext(), ProductPageActivity.class);
-                intent.putExtra("key", result.get(position).getKey());
+                intent.putExtra("title", result.get(position).title);
+                intent.putExtra("price", result.get(position).price);
+                intent.putExtra("description", result.get(position).description);
+
                 startActivity(intent);
             }
         };

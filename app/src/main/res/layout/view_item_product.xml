@@ -34,6 +34,7 @@
         android:textColor="@color/colorPrimaryDark"
         android:text="Price"/>
 
+
 </LinearLayout>
 
 

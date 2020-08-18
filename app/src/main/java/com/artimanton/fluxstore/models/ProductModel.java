@@ -1,12 +1,11 @@
 package com.artimanton.fluxstore.models;
 
-import android.widget.EditText;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProductModel implements Serializable {
+
     public String title;
     public String price;
     public String size;
@@ -15,12 +14,17 @@ public class ProductModel implements Serializable {
     public String product_code;
     public String material;
     public String country;
+    public String key;
+
+    public String getTitle() {
+        return title;
+    }
 
     public String getKey() {
         return key;
     }
 
-    public String key;
+
 
     public ProductModel(){}
 
