@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".AddRecordActivity">
@@ -75,6 +74,18 @@
         android:hint="Country"/>
 
     <Button
+        android:id="@+id/button_choose_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="14dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        android:onClick="chooseImage"
+        android:text="Choose Image" />
+
+    <Button
         android:id="@+id/button_add_to_firebase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +95,6 @@
         android:textColor="@color/white"
         android:onClick="add_to_firebase"
         android:text="Add To FireBase" />
-
 
 
 </LinearLayout>
