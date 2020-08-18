@@ -37,7 +37,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.RecordVi
     public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
         final ProductModel record = list.get(position);
         holder.etTitle.setText(record.title);
-        holder.etPrice.setText(record.price);
+        holder.etPrice.setText("$" + record.price);
 
     }
 

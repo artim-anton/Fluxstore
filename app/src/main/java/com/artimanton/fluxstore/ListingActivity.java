@@ -1,5 +1,6 @@
 package com.artimanton.fluxstore;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,11 +10,14 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.artimanton.fluxstore.adapter.ProductAdapter;
 import com.artimanton.fluxstore.models.ProductModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +44,31 @@ public class ListingActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back_white_24dp);
         load_product();
 
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                Toast.makeText(getApplicationContext(), "select home", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.action_search:
+                                Toast.makeText(getApplicationContext(), "select search", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.action_bay:
+                                Toast.makeText(getApplicationContext(), "select bay", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.action_account:
+                                Toast.makeText(getApplicationContext(), "select account", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return false;
+                    }
+                });
     }
 
     @Override

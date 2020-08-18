@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductPageActivity"></activity>
+        <activity android:name=".ProductPageActivity" android:theme="@style/ProductTheme"></activity>
         <activity android:name=".AddRecordActivity" />
         <activity android:name=".ListingActivity"
             android:label="@string/dresses"

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginRight="5dp"
     android:orientation="vertical">
 
     <ImageView
@@ -11,30 +13,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:src="@drawable/image">
-    </ImageView>
+        android:src="@drawable/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
         android:id="@+id/tv_title_item"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/raleway"
-        android:textSize="14dp"
+        android:text="Title"
         android:textColor="@color/colorPrimaryDark"
-        android:text="Title" />
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@id/image_product"
+        app:layout_constraintTop_toBottomOf="@id/image_product" />
 
     <TextView
         android:id="@+id/tv_price_item"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fontFamily="@font/roboto"
-        android:textSize="16dp"
+        android:text="Price"
         android:textColor="@color/colorPrimaryDark"
-        android:text="Price"/>
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/image_product"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_item" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 

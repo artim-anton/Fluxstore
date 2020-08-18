@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
     android:orientation="vertical"
     tools:context=".ProductPageActivity">
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="70"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:scaleType="centerCrop"
         android:src="@drawable/image" />
 <LinearLayout
@@ -24,7 +23,6 @@
         android:id="@+id/page_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:fontFamily="@font/raleway"
         android:textSize="14dp"
         android:textColor="@color/colorPrimaryDark"
@@ -34,7 +32,6 @@
         android:id="@+id/page_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:fontFamily="@font/roboto"
         android:textSize="16dp"
         android:textColor="@color/colorPrimaryDark"
@@ -47,7 +44,6 @@
             android:id="@+id/button_add_to_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:textSize="14dp"
             android:background="@color/green"
             android:textColor="@color/white"
