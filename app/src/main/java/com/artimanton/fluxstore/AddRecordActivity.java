@@ -3,8 +3,13 @@ package com.artimanton.fluxstore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,6 +41,7 @@ public class AddRecordActivity extends AppCompatActivity {
     private Uri imageURL;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +66,7 @@ public class AddRecordActivity extends AppCompatActivity {
         reference = database.getReference("test");
 
         //String mUserId = FirebaseAuth.getInstance().getUid();
-        String id = reference.push().getKey();
+        id = reference.push().getKey();
         ProductModel newAdvert = new ProductModel(
                 etTitle.getText().toString(),
                 etPrice.getText().toString(),
@@ -72,11 +78,15 @@ public class AddRecordActivity extends AppCompatActivity {
                 etCountry.getText().toString(),
                 id);
 
+
         Map<String, Object> advertValue = newAdvert.toMap();
         Map<String, Object> record = new HashMap<>();
         record.put(id, advertValue);
         reference.updateChildren(record);
-        this.finish();
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,1);
     }
 
     public void chooseImage(View view) {
@@ -90,7 +100,7 @@ public class AddRecordActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && requestCode==RESULT_OK && data!=null && data.getData()!=null) {
+        if (requestCode == 1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageURL = data.getData();
             uploadPicture();
 
@@ -104,7 +114,7 @@ public class AddRecordActivity extends AppCompatActivity {
         pd.show();
 
         final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("images/" + randomKey);
+        StorageReference riversRef = storageReference.child("images/" + id);
 
         riversRef.putFile(imageURL)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -128,4 +138,5 @@ public class AddRecordActivity extends AppCompatActivity {
             }
         });
     }
+
 }
