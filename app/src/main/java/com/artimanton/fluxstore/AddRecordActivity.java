@@ -12,6 +12,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -69,27 +70,13 @@ public class AddRecordActivity extends AppCompatActivity {
 
     public void add_to_firebase(View view) {
 
+
+
         reference = database.getReference("test");
 
         //String mUserId = FirebaseAuth.getInstance().getUid();
         id = reference.push().getKey();
-        ProductModel newAdvert = new ProductModel(
-                etTitle.getText().toString(),
-                etPrice.getText().toString(),
-                etSize.getText().toString(),
-                etColor.getText().toString(),
-                etDescription.getText().toString(),
-                etProduct_code.getText().toString(),
-                etMaterial.getText().toString(),
-                etCountry.getText().toString(),
-                id);
-
-
-        Map<String, Object> advertValue = newAdvert.toMap();
-        Map<String, Object> record = new HashMap<>();
-        record.put(id, advertValue);
-        reference.updateChildren(record);
-        if (imageURL != null) {uploadPicture();} else {this.finish();}
+        if (imageURL != null) {uploadPicture();}
     }
 
     public void chooseImage(View view) {
@@ -147,8 +134,9 @@ public class AddRecordActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 // Got the download URL for 'users/me/profile.png'
-                Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
-                generatedFilePath = downloadUri.toString(); /// The string(file link) that you need
+                taskSnapshot.getStorage().getDownloadUrl();
+                generatedFilePath = uri.toString(); /// The string(file link) that you need
+                createProductModel();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -156,6 +144,26 @@ public class AddRecordActivity extends AppCompatActivity {
                 // Handle any errors
             }
         });
+    }
+
+    private void createProductModel(){
+        ProductModel newAdvert = new ProductModel(
+                etTitle.getText().toString(),
+                etPrice.getText().toString(),
+                etSize.getText().toString(),
+                etColor.getText().toString(),
+                etDescription.getText().toString(),
+                etProduct_code.getText().toString(),
+                etMaterial.getText().toString(),
+                generatedFilePath,
+                id);
+
+
+        Map<String, Object> advertValue = newAdvert.toMap();
+        Map<String, Object> record = new HashMap<>();
+        record.put(id, advertValue);
+        reference.updateChildren(record);
+        this.finish();
     }
 
 }

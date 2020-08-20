@@ -17,13 +17,20 @@ import android.widget.Toast;
 
 import com.artimanton.fluxstore.adapter.ProductAdapter;
 import com.artimanton.fluxstore.models.ProductModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +39,8 @@ public class ListingActivity extends AppCompatActivity {
     private List<ProductModel> result;
     private ProductAdapter adapter;
     private ProductAdapter.RecyclerViewClickListner listner;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
@@ -144,7 +153,7 @@ public class ListingActivity extends AppCompatActivity {
         //layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         //recyclerView.setLayoutManager(layoutManager);
 
-        adapter = new ProductAdapter(result, listner);
+        adapter = new ProductAdapter(result, listner, this);
         recyclerView.setAdapter(adapter);
 
         updateList();
@@ -157,6 +166,7 @@ public class ListingActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);*/
 
     }
+
 
     private void setOnClickListner() {
         listner = new ProductAdapter.RecyclerViewClickListner() {
@@ -176,5 +186,7 @@ public class ListingActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddRecordActivity.class);
         startActivity(intent);
     }
+
+
 
 }
