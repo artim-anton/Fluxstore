@@ -72,19 +72,31 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Country"/>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <Button
         android:id="@+id/button_choose_image"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:padding="16dp"
         android:textSize="14dp"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_marginBottom="8dp"
         android:background="@color/green"
         android:textColor="@color/white"
         android:onClick="chooseImage"
         android:text="Choose Image" />
+
+    <EditText
+        android:id="@+id/tv_Url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:clickable="false">
+
+    </EditText>
+</LinearLayout>
 
     <Button
         android:id="@+id/button_add_to_firebase"

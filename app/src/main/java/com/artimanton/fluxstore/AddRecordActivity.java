@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.artimanton.fluxstore.models.ProductModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,13 +36,15 @@ import java.util.Map;
 import java.util.UUID;
 
 public class AddRecordActivity extends AppCompatActivity {
-    public EditText etTitle, etPrice, etSize, etColor, etDescription, etProduct_code, etMaterial, etCountry, etKey;
+    private EditText etTitle, etPrice, etSize, etColor, etDescription, etProduct_code, etMaterial, etCountry, etKey;
+    private EditText etUrl;
     private FirebaseDatabase database;
     private DatabaseReference reference;
     private Uri imageURL;
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private String id;
+    private String generatedFilePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,9 @@ public class AddRecordActivity extends AppCompatActivity {
         etProduct_code = findViewById(R.id.tv_product_code);
         etMaterial = findViewById(R.id.tv_material);
         etCountry = findViewById(R.id.tv_country);
+
+        etUrl = findViewById(R.id.tv_Url);
+
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -83,10 +89,7 @@ public class AddRecordActivity extends AppCompatActivity {
         Map<String, Object> record = new HashMap<>();
         record.put(id, advertValue);
         reference.updateChildren(record);
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        if (imageURL != null) {uploadPicture();} else {this.finish();}
     }
 
     public void chooseImage(View view) {
@@ -102,8 +105,7 @@ public class AddRecordActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode==RESULT_OK && data!=null && data.getData()!=null) {
             imageURL = data.getData();
-            uploadPicture();
-
+            etUrl.setText(imageURL.toString());
         }
     }
 
@@ -113,15 +115,15 @@ public class AddRecordActivity extends AppCompatActivity {
         pd.setTitle("Uploading Image...");
         pd.show();
 
-        final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("images/" + id);
+        //final String randomKey = UUID.randomUUID().toString();
 
-        riversRef.putFile(imageURL)
+        storageReference.child("images/" + id).putFile(imageURL)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
                         Snackbar.make(findViewById(android.R.id.content), "Image uploaded", Snackbar.LENGTH_LONG).show();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
