@@ -123,6 +123,7 @@ public class AddRecordActivity extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         pd.dismiss();
                         Snackbar.make(findViewById(android.R.id.content), "Image uploaded", Snackbar.LENGTH_LONG).show();
+                        getuploadUrl(taskSnapshot);
                         finish();
                     }
                 })
@@ -137,6 +138,22 @@ public class AddRecordActivity extends AppCompatActivity {
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                 double progressPercent = (100.00 * taskSnapshot.getBytesTransferred()/taskSnapshot.getBytesTransferred());
                 pd.setMessage("Percentage: "+ (int) progressPercent + "%");
+            }
+        });
+    }
+
+    private void getuploadUrl(final UploadTask.TaskSnapshot taskSnapshot){
+        storageReference.child("images/" + id).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+                Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
+                generatedFilePath = downloadUri.toString(); /// The string(file link) that you need
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
             }
         });
     }
