@@ -56,7 +56,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.RecordVi
 
 
         Picasso.with(context)
-                .load(record.country)
+                .load(record.image_url)
                 .error(R.drawable.image)
                 .into(imageView);
 

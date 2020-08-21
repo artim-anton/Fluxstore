@@ -148,6 +148,7 @@ public class AddRecordActivity extends AppCompatActivity {
 
     private void createProductModel(){
         ProductModel newAdvert = new ProductModel(
+                generatedFilePath,
                 etTitle.getText().toString(),
                 etPrice.getText().toString(),
                 etSize.getText().toString(),
@@ -155,7 +156,7 @@ public class AddRecordActivity extends AppCompatActivity {
                 etDescription.getText().toString(),
                 etProduct_code.getText().toString(),
                 etMaterial.getText().toString(),
-                generatedFilePath,
+                etCountry.getText().toString(),
                 id);
 
 

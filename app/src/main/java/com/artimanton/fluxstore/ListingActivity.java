@@ -176,6 +176,7 @@ public class ListingActivity extends AppCompatActivity {
                 intent.putExtra("title", result.get(position).title);
                 intent.putExtra("price", result.get(position).price);
                 intent.putExtra("description", result.get(position).description);
+                intent.putExtra("image", result.get(position).image_url);
 
                 startActivity(intent);
             }
