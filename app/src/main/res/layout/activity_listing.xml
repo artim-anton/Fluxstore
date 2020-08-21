@@ -22,6 +22,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/record_list"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/view_item_product"
