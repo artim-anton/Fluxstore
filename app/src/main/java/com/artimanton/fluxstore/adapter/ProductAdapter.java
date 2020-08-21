@@ -1,12 +1,12 @@
 package com.artimanton.fluxstore.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.ContentProviderClient;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,28 +15,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.artimanton.fluxstore.R;
 import com.artimanton.fluxstore.models.ProductModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.RecordViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.RecordViewHolder> implements Filterable {
 
     private List<ProductModel> list;
+    private List<ProductModel> listFull;
     private RecyclerViewClickListner listner;
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
     private Context context;
     private ImageView imageView;
 
     public ProductAdapter(List<ProductModel> list, RecyclerViewClickListner listner, Context context) {
         this.list = list;
+        listFull = list;
+        //listFull = new ArrayList<>(list);
         this.listner = listner;
         this.context = context;
     }
@@ -50,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.RecordVi
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull RecordViewHolder holder, int position) {
-        final ProductModel record = list.get(position);
+        ProductModel record = list.get(position);
         holder.etTitle.setText(record.title);
         holder.etPrice.setText("$" + record.price);
 
@@ -91,4 +86,35 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.RecordVi
     public interface RecyclerViewClickListner{
         void onClick(View v, int position);
     }
+
+    @Override
+    public Filter getFilter() {
+        return adapterFilter;
+    }
+    private Filter adapterFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<ProductModel> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(listFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (ProductModel item : listFull) {
+                    if (item.getTitle().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            list.clear();
+            list.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
