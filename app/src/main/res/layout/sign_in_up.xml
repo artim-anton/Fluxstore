@@ -9,23 +9,23 @@
 
 
     <EditText android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:id="@+id/et_email"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
         android:hint="Email"
-        android:textSize="30dp"
+        android:textSize="24dp"
         android:inputType="textEmailAddress"/>
     <EditText android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_below="@+id/et_email"
         android:hint="Password"
-        android:textSize="30dp"
+        android:textSize="24dp"
         android:id="@+id/et_password"
         android:inputType="textPassword"
         />
@@ -44,14 +44,15 @@
             android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_marginRight="16dp"
-            android:id="@+id/btn_sign_in"/>
+            android:id="@+id/btn_close"/>
+
         <Button android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Sign_up"
+            android:text="Sign_in"
             android:background="@color/green"
             android:textColor="@color/white"
-            android:id="@+id/btn_registration"/>
+            android:id="@+id/btn_sign"/>
 
     </LinearLayout>
 </RelativeLayout>
