@@ -124,10 +124,10 @@ public class PageFragment3 extends Fragment {
                 String user_password = userpassword.getText().toString();
                 if (!user_name.isEmpty() || !user_password.isEmpty()){
                     switch (textButton){
-                        case("Sign in"):
+                        case("Sign up"):
                             registration(user_name,user_password);
                         break;
-                        case("Sign up"):
+                        case("Sign in"):
                             signin(user_name,user_password);
                         break;
                 }
