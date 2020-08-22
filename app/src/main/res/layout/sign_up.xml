@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_authentication"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <EditText android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/et_email"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"
+        android:textSize="30dp"
+        android:inputType="textEmailAddress"/>
+    <EditText android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_below="@+id/et_email"
+        android:hint="Password"
+        android:textSize="30dp"
+        android:id="@+id/et_password"
+        android:inputType="textPassword"
+        />
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_password"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="70dp"
+        android:layout_margin="32dp"
+        >
+        <Button android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Close"
+            android:background="@color/green"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:layout_marginRight="16dp"
+            android:id="@+id/btn_sign_in"/>
+        <Button android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Sign_up"
+            android:background="@color/green"
+            android:textColor="@color/white"
+            android:id="@+id/btn_registration"/>
+
+    </LinearLayout>
+</RelativeLayout>

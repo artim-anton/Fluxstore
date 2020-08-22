@@ -9,9 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProductPageActivity" android:theme="@style/ProductTheme"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity
+            android:name=".ProductPageActivity"
+            android:theme="@style/ProductTheme" />
         <activity android:name=".AddRecordActivity" />
-        <activity android:name=".ListingActivity"
+        <activity
+            android:name=".ListingActivity"
             android:label="@string/dresses"
             android:theme="@style/ListingTheme" />
         <activity android:name=".MainActivity">
