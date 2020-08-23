@@ -1,12 +1,5 @@
 package com.artimanton.fluxstore;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuItemCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,24 +7,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.artimanton.fluxstore.adapter.ProductAdapter;
 import com.artimanton.fluxstore.models.ProductModel;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +45,7 @@ public class ListingActivity extends AppCompatActivity {
         load_product();
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+        /*BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -78,7 +68,7 @@ public class ListingActivity extends AppCompatActivity {
                         }
                         return false;
                     }
-                });
+                });*/
     }
 
     @Override
@@ -192,6 +182,9 @@ public class ListingActivity extends AppCompatActivity {
                 intent.putExtra("price", result.get(position).price);
                 intent.putExtra("description", result.get(position).description);
                 intent.putExtra("image", result.get(position).image_url);
+                intent.putExtra("product_code", result.get(position).product_code);
+                intent.putExtra("material", result.get(position).material);
+                intent.putExtra("country", result.get(position).country);
 
                 startActivity(intent);
             }

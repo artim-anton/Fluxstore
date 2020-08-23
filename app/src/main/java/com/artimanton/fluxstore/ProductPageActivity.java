@@ -28,8 +28,8 @@ public class ProductPageActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference reference;
-    private String title, price, description, image;
-    private TextView tvTitle, tvPrice, tvDescription;
+    private String title, price, description, image, product_code, material, country;
+    private TextView tvTitle, tvPrice, tvDescription, tvProductCode, tvMaterial, tvCountry;
     private ImageView imageView;
     public Spinner spinner_number;
 
@@ -38,22 +38,33 @@ public class ProductPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_page);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        imageView = (ImageView) findViewById(R.id.image_product_page);
         tvTitle = (TextView) findViewById(R.id.page_title);
         tvPrice = (TextView) findViewById(R.id.page_price);
         tvDescription = (TextView) findViewById(R.id.page_description);
-        imageView = (ImageView) findViewById(R.id.image_product_page);
+        tvProductCode = (TextView) findViewById(R.id.page_product_code);
+        tvMaterial = (TextView) findViewById(R.id.page_material);
+        tvCountry = (TextView) findViewById(R.id.page_country);
+
 
         Intent intent = getIntent();
 
+        image = intent.getStringExtra("image");
         title = intent.getStringExtra("title");
         price = intent.getStringExtra("price");
         description = intent.getStringExtra("description");
-        image = intent.getStringExtra("image");
+        product_code = intent.getStringExtra("product_code");
+        material = intent.getStringExtra("material");
+        country = intent.getStringExtra("country");
 
 
         tvTitle.setText(title);
         tvPrice.setText("$" + price);
         tvDescription.setText(description);
+        tvProductCode.setText(tvProductCode.getText()+product_code);
+        tvMaterial.setText(tvMaterial.getText()+material);
+        tvCountry.setText(tvCountry.getText()+country);
+
 
         Picasso.with(this)
                 .load(image)
