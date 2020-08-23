@@ -83,7 +83,7 @@
         android:textSize="14dp"
         android:visibility="visible"
         android:layout_marginBottom="8dp"
-        android:background="@color/green"
+        android:background="@color/green_light"
         android:textColor="@color/white"
         android:onClick="chooseImage"
         android:text="Choose Image" />
@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="14dp"
-        android:background="@color/green"
+        android:background="@color/green_light"
         android:textColor="@color/white"
         android:onClick="add_to_firebase"
         android:text="Add To FireBase" />

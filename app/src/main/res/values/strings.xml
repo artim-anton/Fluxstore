@@ -4,4 +4,11 @@
         Lorem Ipsum Dolor Sit Amet\n
         Consectetur Adipisicing Elit</string>
     <string name="dresses">Dresses</string>
+
+    <string-array name="size">
+        <item>small</item>
+        <item>big</item>
+    </string-array>
+
+
 </resources>

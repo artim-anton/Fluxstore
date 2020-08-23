@@ -40,7 +40,7 @@
         <Button android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Close"
-            android:background="@color/green"
+            android:background="@color/green_light"
             android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_marginRight="16dp"
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Sign_in"
-            android:background="@color/green"
+            android:background="@color/green_light"
             android:textColor="@color/white"
             android:id="@+id/btn_sign"/>
 

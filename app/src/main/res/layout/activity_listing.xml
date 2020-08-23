@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:background="@color/green"
+        android:background="@color/green_light"
         android:textColor="@color/white"
         android:text="Add Record"
         android:layout_marginBottom="16dp"
